@@ -7,3 +7,5 @@ output.avi
 Real-Time Face Mask Detector .html
 __pycache__
 mask_data
+
+code/OpenCV/Haar_object_detection/image
