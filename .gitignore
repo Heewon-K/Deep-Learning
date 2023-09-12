@@ -8,5 +8,13 @@ output.avi
 Real-Time Face Mask Detector .html
 __pycache__
 mask_data
-
+# image files in Open CV folder
 code/OpenCV/Haar_object_detection/image
+
+# image files + others from project3 folder
+*.jpg
+*.png
+*.yaml
+*.txt
+cmd.txt
+Project3/Save-Pets-ML-main/YOLOv5
