@@ -1,0 +1,109 @@
+{
+    "images": [
+        "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test/"
+    ],
+    "threshold": 10.0,
+    "fix_size": true,
+    "results": [
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\6.jpg",
+            "score": 3.462119728674831,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_0.jpg",
+            "score": 6.356286876383895,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_1.jpg",
+            "score": 3.110543848480811,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_2.jpg",
+            "score": 16.051698019376698,
+            "blurry": false
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_3.jpg",
+            "score": 3.4682452696930257,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_4.jpg",
+            "score": 6.1520761837907,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_5.jpg",
+            "score": 10.704083950367973,
+            "blurry": false
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\car.png",
+            "score": 1.468536981375588,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\pedestrian.png",
+            "score": 1.1913744636530754,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\truck.png",
+            "score": 1.461262369394315,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\6.jpg",
+            "score": 3.462119728674831,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_0.jpg",
+            "score": 6.356286876383895,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_1.jpg",
+            "score": 3.110543848480811,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_2.jpg",
+            "score": 16.051698019376698,
+            "blurry": false
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_3.jpg",
+            "score": 3.4682452696930257,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_4.jpg",
+            "score": 6.1520761837907,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\test_5.jpg",
+            "score": 10.704083950367973,
+            "blurry": false
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\car.png",
+            "score": 1.468536981375588,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\pedestrian.png",
+            "score": 1.1913744636530754,
+            "blurry": true
+        },
+        {
+            "input_path": "C:\\Users\\Playdata\\Documents\\GitHub\\Deep-Learning\\Project3\\Save-Pets-ML-main\\SVM-Classifier\\Dog-Data\\test\\truck.png",
+            "score": 1.461262369394315,
+            "blurry": true
+        }
+    ]
+}
