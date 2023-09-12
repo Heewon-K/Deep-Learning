@@ -1,5 +1,6 @@
 naver
 .env
+.DS_Store
 
 mask_model
 google_images_download.py
