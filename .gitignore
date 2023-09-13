@@ -19,3 +19,6 @@ code/OpenCV/Haar_object_detection/image
 *.txt
 cmd.txt
 Project3/Save-Pets-ML-main/YOLOv5
+
+# files from others
+detect.py
