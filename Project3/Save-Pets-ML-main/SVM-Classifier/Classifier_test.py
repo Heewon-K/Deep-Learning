@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import cv2
+import pandas as pd
 
 import pickle
 import sklearn
@@ -17,10 +18,10 @@ from dotenv import load_dotenv
 load_dotenv('.env')
 
 # 사용법 : python Classifier.py --test test_0.jpg --dir Dog-Data
-# parser = argparse.ArgumentParser(description='Argparse Tutorial')
-# parser.add_argument('--dir', default='Dog-Data',help='dataset directory')
-# parser.add_argument('--test', default='test_1.jpg',help='test image data')
-# opt = parser.parse_args()
+parser = argparse.ArgumentParser(description='Argparse Tutorial')
+parser.add_argument('--dir', default='Dog-Data',help='dataset directory')
+parser.add_argument('--test', default='test_1.jpg',help='test image data')
+opt = parser.parse_args()
 
 #read data
 def read_data(label2id):
@@ -202,7 +203,7 @@ def main():
 
     #predict
     #img_test = cv2.imread(opt.dir + '/test/' + opt.test)
-    img_test = histo_clahe('C:/Users/Playdata/Desktop/Save-Pets-ML-main/SVM-Classifier/Dog-Data/test/' + os.getenv('test_file'))#opt.test)
+    img_test = histo_clahe('C:/Users/Playdata/Desktop/Save-Pets-ML-main/SVM-Classifier/Dog-Data/test/' + opt.test)
 
     img = [img_test]
     img_sift_feature = extract_sift_features(img)
@@ -230,29 +231,23 @@ def main():
         if value == img_predict2[0]:
             knn_k = key
 
-    result =""
-    if svm_k==knn_k:
-        result = result+svm_k+","
-    else:
-        result = result+"a,"
-    # result = result+"202151796꿍1234"+","
-    # result =result+"등록된강아지"+","
-
+    # 예측 결과 문자열 생성
+    df = pd.read_csv('Project3\Save-Pets-ML-main\DB.csv')
     if (svm_prob < 0.65 and knn_prob < 0.55) or svm_k != knn_k:
-        result = result+"미등록강아지"+","
+        print('이 강아지는 아직 등록되어 있지 않아요! 등록하시겠습니까?')  # 예측이 불확실하거나 SVM과 KNN의 예측이 다른 경우 "미등록강아지"로 설정
+    elif svm_k==knn_k and max([knn.score(X_test, Y_test), svm.score(X_test, Y_test)]) >= 0.85:
+        # (svm_prob < 0.65 and knn_prob < 0.55) or svm_k != knn_k의 반대 + accuracy도 활용?
+        print('이 강아지는 등록이 되어있는 강아지 입니다!' + '\n' + '제 이름은 {}, {}살 입니다! {}님과 함께 살고 있어요!'.format(df['강아지이름'][df['일련번호']==svm_k].values, df['나이'][df['일련번호']==svm_k].values[0], df['견주이름'][df['일련번호']==svm_k].values) +'\n' + '저는 {}예요 :3'.format(df['견종'][df['일련번호']==svm_k].values[0]))
     else:
-        result = result+"등록된강아지"+","
-    #Accuracy
-    if svm.score(X_test,Y_test) > knn.score(X_test,Y_test):
-        result = result+str(svm.score(X_test,Y_test))
-    else :
-        result = result+str(knn.score(X_test,Y_test))
-        
-    # print("SVM Score: ", svm.score(X_test, Y_test))
-    # print("KNN Score: ", knn.score(X_test, Y_test))
-    # print("running time: ", round(time.time() - start, 2))
-
-    print(result)
-
+        pass
+                
+    # 최고 정확도 출력
+    #if svm.score(X_test, Y_test) > knn.score(X_test, Y_test):
+    #    result += str(svm.score(X_test, Y_test))  # SVM 모델의 정확도 출력
+    #else:
+    #    result += str(knn.score(X_test, Y_test))  # KNN 모델의 정확도 출력
+    # print(result)
+    # print('\n',img_path,'\n','svm_score : ',svm_prob, 'knn_score : ', knn_prob)  # 결과 문자열 출력
+    # print('\n',img_path,'\n' ,sum(img_sift_feature[0].flatten()))
 if __name__ == "__main__":
     main()
