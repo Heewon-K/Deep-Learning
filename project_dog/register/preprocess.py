@@ -6,6 +6,7 @@ import pandas as pd
 from PIL import Image
 from histo_clahe import histo_clahe
 
+
 # ---------------------------------------------------
 parser = argparse.ArgumentParser(description='Argparse Tutorial')
 # parser.add_argument('--dir', default='0',help='dataset directory') -> reference에 존재, 본 script 불용
@@ -38,12 +39,11 @@ def new_input():
     
     input_data = {'일련번호': dog_id, '강아지이름': dog_name, '나이': dog_age, '견종':dog_sp, '견주이름':owner_name, 
                   '연락처':owner_info, '의료정보1':dog_med1, '의료정보2':dog_med2}
-    DataBase = DataBase.append(input_data, ignore_index = True)
-    DataBase.to_csv('../DB.csv', header = True, index = False)
-    
+    DataBase.loc[len(DataBase)] = input_data
+    DataBase.to_csv('DB.csv', header = True, index = False, encoding = 'utf-8')
 # ---------------------------------------------------
 
-path = '../image/cropped_img' 
+path = 'image/cropped_img' 
 folder_list = os.listdir(path) #cropped_img의 하부 폴더명으로 구성된 리스트 생성
 for f in folder_list:
     if 'DS_Store' not in f:    
@@ -79,11 +79,12 @@ for f in folder_list:
 
 idx = max(folder_list) # = 폴더명 중 가장 큰 것 
 print(idx)
-if not os.path.isfile('../DB.csv'):
+if not os.path.isfile('DB.csv'):
     DataBase = pd.DataFrame(columns=['일련번호', '강아지이름', '나이', '견종', '견주이름', '연락처', '의료정보1', '의료정보2'])
     new_input()
+
 else:
-    DataBase = pd.read_csv('../DB.csv')
+    DataBase = pd.read_csv('DB.csv')
     new_input() 
-# ------------------------- 바뀐 점----------------
-print('등록되었습니다!')
+
+print('등록되었습니다.')
