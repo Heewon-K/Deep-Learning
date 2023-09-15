@@ -27,21 +27,84 @@ def createFolder(directory):
 def new_input():
     global DataBase
     global idx
-    # 신규 강아지 input
-    dog_name = input("강아지의 이름 : ")
-    dog_age = input("강아지의 나이 : ")
-    dog_sp = input("견종 : ")
-    owner_name = input("견주의 이름 : ")
-    owner_info = input("견주의 연락처 : ")
-    dog_med1 = input("강아지의 의료정보 1 : ")
-    dog_med2 = input("강아지의 의료정보 2 : ")
     dog_id = idx
     
+    # -----신규 강아지 input----
+    # 강아지 이름 - dog_name
+    dog_name = input("강아지의 이름 : ")
+    
+    # 강아지의 나이 - dog_age : int만 입력 
+    if len(dog_name) > 0: 
+        while True:
+            try:
+                age_answer = int(input("강아지의 나이 (숫자만 입력하세요): "))
+                break
+            except ValueError:
+                print('올바른 입력값이 아닙니다.')
+                continue
+        dog_age = age_answer
+    
+    # 견종 - dog_sp
+    dog_sp = input("견종 : ")  # 절차 맞추기 가능?
+    
+    # 견주 이름 - owner_name 
+    owner_name = input("견주의 이름 : ")
+    
+    # 견주의 연락처 - owner_info : int만 입력  
+    if len(owner_name) > 0:
+        while True:
+            try:
+                info_answer = int(input("견주의 연락처 (숫자만 입력하세요): "))
+                break
+            except ValueError:
+                print('올바른 입력값이 아닙니다.')
+                continue
+        owner_info = '0' + str(info_answer)  
+    
+    # 강아지 성별 - dog_sex : 암/암컷 = 0, 수/수컷 = 1              
+    if len(owner_info) == 11:
+        while True:
+            sex_answer = input("강아지의 성별 (암/수) : ")
+            if sex_answer not in ['암', '암컷', '수', '수컷']:
+                print('올바른 입력값이 아닙니다.')
+                continue
+            else:
+                break
+        if sex_answer in ['암', '암컷']:
+            dog_sex = 0
+        if sex_answer in ['수', '수컷']:
+            dog_sex = 1
+            
+    # 중성화 여부 - dog_neu : n/N = 0, y/Y = 1 
+    if dog_sex in [0,1]: # 중성화 여부 입력
+        while True:
+            neu_answer = input('강아지의 중성화 여부 (Y/N) : ')
+            if neu_answer not in ['y', 'Y', 'n', 'N']:
+                print('올바른 입력값이 아닙니다.')
+                continue
+            else:
+                break
+        if neu_answer in ['n', 'N']:
+            dog_neu = 0
+        if neu_answer in ['y', 'Y']:
+            dog_neu = 1
+            
+    # 강아지 체중 - dog_wght : float만 입력  
+    if dog_neu in [0,1]:
+        while True: 
+            try:
+                wght_answer = float(input('강아지의 체중 : '))
+                break
+            except ValueError:
+                print('올바른 입력값이 아닙니다.')
+                continue
+        dog_wght = wght_answer       
+    
     input_data = {'일련번호': dog_id, '강아지이름': dog_name, '나이': dog_age, '견종':dog_sp, '견주이름':owner_name, 
-                  '연락처':owner_info, '의료정보1':dog_med1, '의료정보2':dog_med2}
+                  '연락처':owner_info, '성별':dog_sex, '중성화':dog_neu, '체중' : dog_wght}
     DataBase.loc[len(DataBase)] = input_data
-    DataBase.to_csv('DB.csv', header = True, index = False, encoding = 'utf-8')
-# ---------------------------------------------------
+    DataBase.to_csv('DB.csv', index = False, encoding = 'cp949')
+# -------------------------------------------------------------------------------------------
 
 path = 'image/cropped_img' 
 folder_list = os.listdir(path) #cropped_img의 하부 폴더명으로 구성된 리스트 생성
@@ -80,11 +143,10 @@ for f in folder_list:
 idx = max(folder_list) # = 폴더명 중 가장 큰 것 
 print(idx)
 if not os.path.isfile('DB.csv'):
-    DataBase = pd.DataFrame(columns=['일련번호', '강아지이름', '나이', '견종', '견주이름', '연락처', '의료정보1', '의료정보2'])
+    DataBase = pd.DataFrame(columns=['일련번호', '강아지이름', '나이', '견종', '견주이름', '연락처', '성별', '중성화', '체중'])
     new_input()
-
 else:
-    DataBase = pd.read_csv('DB.csv')
+    DataBase = pd.read_csv('DB.csv', encoding = 'cp949')
     new_input() 
 
 print('등록되었습니다.')

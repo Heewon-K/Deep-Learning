@@ -71,12 +71,12 @@ def read_data(label2id):
 def extract_sift_features(X):
     image_descriptors = [] #이미지 특징이 저장될 리스트
 
-    #이미지 추출기 생성
+    # 이미지 추출기 생성
     sift = cv2.SIFT_create(nfeatures=200, nOctaveLayers=3, contrastThreshold=0.0005)
-    #nfeatures : 검출최대특징수
-    #nOctaveLayers=3 : 
+    # nfeatures : 검출최대특징수
+    # nOctaveLayers=3 : 
     # ->nOctaveLayers: 이미지 피라미드에 사용할 계층 수 계층을 거듭할수록 이미지크기가 1/4(가로세로 각각 1/2)
-    #contrastThreshold=0.0005 : 약한 특징에 대한 필터링 기준
+    # contrastThreshold=0.0005 : 약한 특징에 대한 필터링 기준
 
     for i in range(len(X)):
         kp, des = sift.detectAndCompute(X[i], None) #SIFT 특징추출
@@ -122,9 +122,9 @@ def kmeans_bow(all_descriptors, num_clusters):
 # 이미지의 특징들을 벡터로 변환 함수 정의
 
 def create_features_bow(image_descriptors, BoW, num_clusters):
-    #image_descriptors : 특징추출기
+    # image_descriptors : 특징추출기
     X_features = []  # 이미지 특징 벡터를 저장할 리스트
-    #회전과 크기변환에도 불변한 특징을 벡터로 저장
+    # 회전과 크기변환에도 불변한 특징을 벡터로 저장
     for i in range(len(image_descriptors)):
         features = np.array([0] * num_clusters)  # 0으로 초기화된 특징 벡터 생성
 
@@ -266,7 +266,7 @@ def main():
                     knn_k = key
 
             # 예측 결과 문자열 생성
-            df = pd.read_csv('DB.csv', encoding = 'utf-8', header = 0)
+            df = pd.read_csv('DB.csv', encoding = 'cp949', header = 0)
             if (svm_prob < 0.65 and knn_prob < 0.55) or svm_k != knn_k:  # 예측이 불확실하거나 SVM과 KNN의 예측이 다른 경우 "미등록강아지"로 설정
                 while True:
                     answer = input('이 강아지는 아직 등록되어 있지 않아요! 등록하시겠습니까? (Y/N)')

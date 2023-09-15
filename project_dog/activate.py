@@ -6,7 +6,7 @@ import cv2
 # time.sleep(0.5)
 
 # 3. classifier
-classifier_result = os.system('python scan/classifier.py --dir image/')
+#classifier_result = os.system('python scan/classifier.py --dir image/')
 time.sleep(0.5)
 
 
@@ -22,4 +22,4 @@ time.sleep(0.5)
 
 
 # # preprocess.py 실행, DB 추가
-# os.system('python register/preprocess.py --savedir image/train')
+#os.system('python register/preprocess.py --savedir image/train')
